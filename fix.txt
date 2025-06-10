@@ -1,0 +1,251 @@
+PS C:\Dragonfly\literate-disco> gh auth login
+? Where do you use GitHub? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+! First copy your one-time code: 5D93-DA25
+Press Enter to open https://github.com/login/device in your browser...
+✓ Authentication complete.
+- gh config set -h github.com git_protocol https
+✓ Configured git protocol
+✓ Logged in as ltanedo
+! You were already logged in to this account
+PS C:\Dragonfly\literate-disco> git push origin
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 411.19 MiB | 7.96 MiB/s, done.
+Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: Trace: 14e6d652cd3593a575e9e2d5cdfe323b0a6c18a1024f566572f76bbf288defba
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File Capacities-1.48.9.exe is 300.53 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/ltanedo/literate-disco.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/ltanedo/literate-disco.git'
+PS C:\Dragonfly\literate-disco> git lfs install
+Updated Git hooks.
+Git LFS initialized.
+PS C:\Dragonfly\literate-disco> git lfs track "*.exe"
+Tracking "*.exe"
+PS C:\Dragonfly\literate-disco> git add .gitattributes
+PS C:\Dragonfly\literate-disco> git add Capacities-1.48.9.exe
+PS C:\Dragonfly\literate-disco> git commit -m 'init'
+[main 970be59] init
+ 2 files changed, 1 insertion(+)
+ create mode 100644 .gitattributes
+PS C:\Dragonfly\literate-disco> git push origin
+Uploading LFS objects: 100% (1/1), 315 MB | 11 MB/s, done.
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (12/12), 411.19 MiB | 7.58 MiB/s, done.
+Total 12 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: Trace: 2d8c3c01b3fea9fd9dc56f73678bf3c4b58cafdd17cf2c094c0ed68d9d3a9ca5
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File Capacities-1.48.9.exe is 300.53 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/ltanedo/literate-disco.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/ltanedo/literate-disco.git'
+PS C:\Dragonfly\literate-disco> git lfs track "Gemini-Desktop.Setup.1.0.7.exe"
+Tracking "Gemini-Desktop.Setup.1.0.7.exe"
+PS C:\Dragonfly\literate-disco> git lfs track "Capacities-1.48.9.exe"
+Tracking "Capacities-1.48.9.exe"
+PS C:\Dragonfly\literate-disco> git add .gitattributes
+PS C:\Dragonfly\literate-disco> git commit -m "Track large .exe files with Git LFS"
+[main 1b4835b] Track large .exe files with Git LFS
+ 1 file changed, 2 insertions(+)
+PS C:\Dragonfly\literate-disco> git lfs migrate info
+migrate: Fetching remote refs: ..., done.
+migrate: Sorting commits: ..., done.
+migrate: Examining commits: 100% (3/3), done.
+*.exe           427 MB  4/4 files       100%
+*.msi           14 MB   1/1 file        100%
+*.whl           545 KB  1/1 file        100%
+*.gitattributes 209 B   2/2 files       100%
+
+LFS Objects     315 MB  1/1 file        100%
+PS C:\Dragonfly\literate-disco> git push --force origin main
+Uploading LFS objects: 100% (1/1), 315 MB | 0 B/s, done.
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (15/15), 411.19 MiB | 7.06 MiB/s, done.
+Total 15 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: Trace: 6f209a3883daa2b37dae7df6ea24557dc9d7669eee03c03b3646aad82aa0cb3d
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File Capacities-1.48.9.exe is 300.53 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/ltanedo/literate-disco.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/ltanedo/literate-disco.git'
+PS C:\Dragonfly\literate-disco> git reflog expire --expire=now --all
+PS C:\Dragonfly\literate-disco> git gc --prune=now
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (15/15), done.
+Total 15 (delta 2), reused 0 (delta 0), pack-reused 0
+PS C:\Dragonfly\literate-disco> git push --force origin main
+Uploading LFS objects: 100% (1/1), 315 MB | 0 B/s, done.
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (15/15), 411.19 MiB | 9.60 MiB/s, done.
+Total 15 (delta 2), reused 15 (delta 2), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: Trace: 79bb037e4e18434c69160912c610eff7150869f778958ec1197fa06031a75ef2
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File Capacities-1.48.9.exe is 300.53 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/ltanedo/literate-disco.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/ltanedo/literate-disco.git'
+PS C:\Dragonfly\literate-disco> git lfs migrate info
+migrate: Fetching remote refs: ..., done.
+migrate: Sorting commits: ..., done.
+migrate: Examining commits: 100% (3/3), done.
+*.exe           427 MB  4/4 files       100%
+*.msi           14 MB   1/1 file        100%
+*.whl           545 KB  1/1 file        100%
+*.gitattributes 209 B   2/2 files       100%
+
+LFS Objects     315 MB  1/1 file        100%
+PS C:\Dragonfly\literate-disco> git lfs migrate import --above=1MB --include="*.exe" --everything
+migrate: override changes in your working copy?  All uncommitted changes will be lost! [y/N] y
+migrate: changes in your working copy will be overridden ...
+Cannot use --above with --include, --exclude, --fixup
+PS C:\Dragonfly\literate-disco> git log --all --pretty=oneline --name-only --max-count=200 | grep -E "Gemini-Desktop.Setup.1.0.7.exe|Capacities-1.48.9.exe"
+grep : The term 'grep' is not recognized as the name of a cmdlet, function, script file, or operable program. Check
+the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:62
++ ... log --all --pretty=oneline --name-only --max-count=200 | grep -E "Gem ...
++                                                              ~~~~
+    + CategoryInfo          : ObjectNotFound: (grep:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Dragonfly\literate-disco> git reflog expire --expire=now --all
+PS C:\Dragonfly\literate-disco> git gc --prune=now
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (15/15), done.
+Total 15 (delta 2), reused 15 (delta 2), pack-reused 0
+PS C:\Dragonfly\literate-disco> git push --force origin main
+Uploading LFS objects: 100% (1/1), 315 MB | 0 B/s, done.
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (15/15), 411.19 MiB | 9.05 MiB/s, done.
+Total 15 (delta 2), reused 15 (delta 2), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: Trace: a0201676a17e9fea4a2d526dab5a3a82e34b0c6b0dc4bc2bda66c8435d62d22e
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File Capacities-1.48.9.exe is 300.53 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/ltanedo/literate-disco.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/ltanedo/literate-disco.git'
+PS C:\Dragonfly\literate-disco> git filter-branch --force --index-filter "git rm --cached --ignore-unmatch Capacities-1.48.9.exe" --prune-empty --tag-name-filter cat -- --all
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Cannot rewrite branches: You have unstaged changes.
+PS C:\Dragonfly\literate-disco> git add .
+PS C:\Dragonfly\literate-disco> git commit -m 'init'
+[main b6a69d0] init
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 fix.txt
+PS C:\Dragonfly\literate-disco> git push oirign
+fatal: 'oirign' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PS C:\Dragonfly\literate-disco> git push origin
+Uploading LFS objects: 100% (4/4), 427 MB | 9.7 MB/s, done.
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (21/21), 411.20 MiB | 9.13 MiB/s, done.
+Total 21 (delta 3), reused 14 (delta 2), pack-reused 0
+remote: Resolving deltas: 100% (3/3), done.
+remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: Trace: 1f58102ba0f39541b5b9f1eb26a5bb6b4d6f254e33eeded05bd461844e90e633
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File Capacities-1.48.9.exe is 300.53 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/ltanedo/literate-disco.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/ltanedo/literate-disco.git'
+PS C:\Dragonfly\literate-disco> git filter-branch --force --index-filter "git rm --cached --ignore-unmatch Capacities-1.48.9.exe" --prune-empty --tag-name-filter cat -- --all
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite 1155aa020ff477fb3f5e1d7259ca24eacea2bb58 (1/4) (0 seconds passed, remaining 0 predicted)    rm 'Capacities-1.48.9.exe'
+Rewrite 970be5970a9b3f1095703697f93d3aa2a82fd5a3 (2/4) (0 seconds passed, remaining 0 predicted)    rm 'Capacities-1.48.9.exe'
+Rewrite 1b4835bea3cd9e332ece38867fc5b584da43361b (3/4) (1 seconds passed, remaining 0 predicted)    rm 'Capacities-1.48.9.exe'
+Rewrite b6a69d0a9272723c0d228cb426b4f22b3c86c490 (3/4) (1 seconds passed, remaining 0 predicted)    rm 'Capacities-1.48.9.exe'
+
+Ref 'refs/heads/main' was rewritten
+PS C:\Dragonfly\literate-disco> git lfs track "Capacities-1.48.9.exe"
+Tracking "Capacities-1.48.9.exe"
+PS C:\Dragonfly\literate-disco>
+PS C:\Dragonfly\literate-disco> git add .gitattributes
+PS C:\Dragonfly\literate-disco> git lfs migrate import --above=1MB --include="*.exe" --everything
+Cannot use --above with --include, --exclude, --fixup
+PS C:\Dragonfly\literate-disco> git add .
+PS C:\Dragonfly\literate-disco> git commit -m 'init'
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+PS C:\Dragonfly\literate-disco> git push oirign
+fatal: 'oirign' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PS C:\Dragonfly\literate-disco> git push origin
+Uploading LFS objects: 100% (3/3), 112 MB | 0 B/s, done.
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (19/19), 110.96 MiB | 9.00 MiB/s, done.
+Total 19 (delta 3), reused 7 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), done.
+remote: warning: See https://gh.io/lfs for more information.
+remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/ltanedo/literate-disco.git
+ * [new branch]      main -> main
+PS C:\Dragonfly\literate-disco>
