@@ -2,3 +2,4 @@
 Gemini-Desktop.Setup.1.0.7.exe filter=lfs diff=lfs merge=lfs -text
 Capacities-1.48.9.exe filter=lfs diff=lfs merge=lfs -text
 Capacities-1.48.9-1 filter=lfs diff=lfs merge=lfs -text
+Capacities-1.48.9-1.exe filter=lfs diff=lfs merge=lfs -text

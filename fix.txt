@@ -248,4 +248,64 @@ remote: warning: File Gemini-Desktop.Setup.1.0.7.exe is 76.58 MB; this is larger
 remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
 To https://github.com/ltanedo/literate-disco.git
  * [new branch]      main -> main
+PS C:\Dragonfly\literate-disco> ^C
+PS C:\Dragonfly\literate-disco> git add .
+PS C:\Dragonfly\literate-disco> git commit -m 'docs'
+[main 03284ef] docs
+ 1 file changed, 251 insertions(+)
+PS C:\Dragonfly\literate-disco> git push origin
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 3.12 KiB | 3.12 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ltanedo/literate-disco.git
+   3f36fb1..03284ef  main -> main
+PS C:\Dragonfly\literate-disco> git lfs track "Capacities-1.48.9-1"
+Tracking "Capacities-1.48.9-1"
+PS C:\Dragonfly\literate-disco> git add .gitattributes
+PS C:\Dragonfly\literate-disco> git add "Capacities-1.48.9-1"
+fatal: pathspec 'Capacities-1.48.9-1' did not match any files
+PS C:\Dragonfly\literate-disco> git add "Capacities-1.48.9-1"
+>>
+fatal: pathspec 'Capacities-1.48.9-1' did not match any files
+PS C:\Dragonfly\literate-disco> ls
+
+
+    Directory: C:\Dragonfly\literate-disco
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         6/10/2025   1:25 PM            227 .gitattributes
+-a----         6/10/2025   1:23 PM      315131512 Capacities-1.48.9-1.exe
+-a----         6/10/2025   1:13 PM          14770 fix.txt
+-a----         6/10/2025  12:57 PM       80303742 Gemini-Desktop.Setup.1.0.7.exe
+-a----         1/21/2025  11:53 AM       13475840 gh_2.65.0_windows_amd64.msi
+-a----         6/10/2025  12:53 PM       30216448 logioptionsplus_installer.exe
+-a----         12/3/2023  12:13 AM         544566 TA_Lib-0.4.28-cp311-cp311-win_amd64.whl
+-a----         6/10/2025  12:53 PM        1096224 Three Finger Drag Installer.exe
+
+
+PS C:\Dragonfly\literate-disco> git lfs track "Capacities-1.48.9-1.exe"
+Tracking "Capacities-1.48.9-1.exe"
+PS C:\Dragonfly\literate-disco> git add "Capacities-1.48.9-1.exe"
+PS C:\Dragonfly\literate-disco> git lfs track "Capacities-1.48.9-1.exe"^C
+PS C:\Dragonfly\literate-disco> git commit -m "Add Capacities-1.48.9-1 to Git LFS"
+[main 96c659b] Add Capacities-1.48.9-1 to Git LFS
+ 2 files changed, 4 insertions(+)
+ create mode 100644 Capacities-1.48.9-1.exe
+PS C:\Dragonfly\literate-disco> git push origin main
+Uploading LFS objects: 100% (1/1), 315 MB | 0 B/s, done.
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 485 bytes | 485.00 KiB/s, done.
+Total 4 (delta 2), reused 1 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/ltanedo/literate-disco.git
+   03284ef..96c659b  main -> main
 PS C:\Dragonfly\literate-disco>
